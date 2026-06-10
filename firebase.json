@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist",
     "site": "aawaz-gyawali",
     "ignore": [
       "firebase.json",
