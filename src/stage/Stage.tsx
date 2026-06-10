@@ -85,7 +85,7 @@ export function Stage() {
           trigger: proxy,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.82,
+          scrub: 0.55,
           snap: {
             snapTo: (value) => nearestSnapPoint(value, N),
             duration: { min: 0.45, max: 1.05 },

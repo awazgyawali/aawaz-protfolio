@@ -1,6 +1,8 @@
 import type Lenis from "lenis";
 
 export const SCENE_ANCHOR = 0.45;
+/** vh budget per scene — lower = less scrolling between snaps */
+export const SCROLL_VH_PER_SCENE = 37;
 
 export const lenisRef: { current: Lenis | null } = { current: null };
 
@@ -10,6 +12,10 @@ let sceneCount = 1;
 export function registerScenes(ids: string[]) {
   sceneIds = ids;
   sceneCount = ids.length || 1;
+}
+
+export function scrollProxyHeight(sceneCount: number) {
+  return sceneCount * SCROLL_VH_PER_SCENE;
 }
 
 export function sceneProgress(index: number, total = sceneCount) {

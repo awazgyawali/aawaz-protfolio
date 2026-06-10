@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Experience } from "./scene/Experience";
 import { morphState } from "./scene/morphState";
 import { prefersReducedMotion, supportsWebGL } from "./scene/perf";
-import { lenisRef, registerScenes, scrollToScene } from "./lib/scroll";
+import { lenisRef, registerScenes, scrollProxyHeight, scrollToScene } from "./lib/scroll";
 import { Stage, SCENES, SCENE_COUNT } from "./stage/Stage";
 import { Preloader } from "./ui/Preloader";
 import { Cursor } from "./ui/Cursor";
@@ -23,7 +23,7 @@ function useScrollSetup() {
     const lenis = new Lenis({
       lerp: 0.075,
       smoothWheel: true,
-      wheelMultiplier: 0.92,
+      wheelMultiplier: 1.35,
       touchMultiplier: 1.25,
       syncTouch: true,
       infinite: false,
@@ -116,7 +116,7 @@ export default function App() {
           <button className="nav-link" onClick={() => scrollToScene("contact")}>Contact</button>
         </nav>
       </header>
-      <div className="scroll-proxy" style={{ height: `${SCENE_COUNT * 92}vh` }} />
+      <div className="scroll-proxy" style={{ height: `${scrollProxyHeight(SCENE_COUNT)}vh` }} />
       <Stage />
       <SceneCounter />
       <NavDots />
