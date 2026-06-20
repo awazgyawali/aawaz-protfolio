@@ -29,7 +29,7 @@ export function Preloader() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="word">Forging</div>
-          <div className="pct">{pct}%</div>
+          <div className="pct">{pct}</div>
         </motion.div>
       )}
     </AnimatePresence>

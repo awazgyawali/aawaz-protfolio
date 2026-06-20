@@ -7,9 +7,11 @@ import { morphState } from "./scene/morphState";
 import { prefersReducedMotion, supportsWebGL } from "./scene/perf";
 import { lenisRef, registerScenes, scrollProxyHeight, scrollToScene } from "./lib/scroll";
 import { Stage, SCENES, SCENE_COUNT } from "./stage/Stage";
+import { sceneState } from "./stage/store";
 import { Preloader } from "./ui/Preloader";
 import { Cursor } from "./ui/Cursor";
 import { NavDots, SceneCounter } from "./ui/NavDots";
+import { ToptalBadge } from "./ui/ToptalBadge";
 
 gsap.registerPlugin(ScrollTrigger);
 registerScenes(SCENES.map((s) => s.id));
@@ -21,10 +23,10 @@ function useScrollSetup() {
       return;
     }
     const lenis = new Lenis({
-      lerp: 0.075,
+      lerp: 0.09,
       smoothWheel: true,
-      wheelMultiplier: 1.35,
-      touchMultiplier: 1.25,
+      wheelMultiplier: 0,
+      touchMultiplier: 2.2,
       syncTouch: true,
       infinite: false,
     });
@@ -77,6 +79,25 @@ function usePointer() {
   }, []);
 }
 
+function usePageSnap() {
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    let locked = false;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (locked) return;
+      const dir = e.deltaY > 0 ? 1 : -1;
+      const next = Math.max(0, Math.min(SCENE_COUNT - 1, sceneState.active + dir));
+      if (next === sceneState.active) return;
+      locked = true;
+      scrollToScene(next);
+      setTimeout(() => { locked = false; }, 850);
+    };
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+}
+
 // Glyph particle targets rasterize the display font — wait for it.
 function useFontsReady() {
   const [ready, setReady] = useState(false);
@@ -98,6 +119,7 @@ function useFontsReady() {
 export default function App() {
   useScrollSetup();
   usePointer();
+  usePageSnap();
   const fontsReady = useFontsReady();
 
   return (
@@ -122,6 +144,9 @@ export default function App() {
       <NavDots />
       <Cursor />
       <div className="grain" aria-hidden />
+      <div className="toptal-badge-anchor">
+        <ToptalBadge />
+      </div>
     </>
   );
 }

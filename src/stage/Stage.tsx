@@ -18,18 +18,18 @@ import { Contact } from "../sections/Contact";
 // morph: t = target shape (0 name · 1 brain · 2 candles · 3 phone · 4 swarm ·
 // 5 tenx · 6 helix · 7 globe), s = scatter, a = alpha, p = palette blend
 export const SCENES = [
-  { id: "hero", label: "Home", ghost: "GYAWALI", morph: { t: 0, s: 0, a: 1, p: 0 } },
-  { id: "manifesto", label: "Manifesto", ghost: "IMPACT", morph: { t: 1, s: 0, a: 1, p: 0.15 } },
-  { id: "arsenal", label: "Arsenal", ghost: "STACK", morph: { t: 1, s: 0.9, a: 0.5, p: 0.5 } },
-  { id: "work", label: "Nepal Share", ghost: "100K", morph: { t: 2, s: 0, a: 1, p: 0 } },
-  { id: "work-2", label: "gStore", ghost: "RETAIL", morph: { t: 3, s: 0, a: 1, p: 0.3 } },
-  { id: "work-3", label: "Brainants", ghost: "FOUNDER", morph: { t: 4, s: 0.12, a: 1, p: 0.55 } },
-  { id: "work-4", label: "Toptal", ghost: "TOP 3%", morph: { t: 4, s: 0, a: 1, p: 0.15 } },
-  { id: "work-5", label: "Highlights", ghost: "SHIPPED", morph: { t: 4, s: 0.55, a: 0.7, p: 0.7 } },
-  { id: "agentops", label: "Workflow", ghost: "DELIVERY", morph: { t: 5, s: 0, a: 1, p: 1 } },
-  { id: "opensource", label: "Open Source", ghost: "OSS", morph: { t: 5, s: 0.75, a: 0.5, p: 0.85 } },
-  { id: "journey", label: "Journey", ghost: "15→25", morph: { t: 6, s: 0, a: 1, p: 0.45 } },
-  { id: "contact", label: "Contact", ghost: "CONTACT", morph: { t: 7, s: 0, a: 1, p: 0.05 } },
+  { id: "hero",       label: "Home",        ghost: "GYAWALI", morph: { t: 0, s: 0,    a: 1,   p: 0    }, accent: "#00e0c6" },
+  { id: "manifesto",  label: "Manifesto",   ghost: "IMPACT",  morph: { t: 1, s: 0,    a: 1,   p: 0.15 }, accent: "#ff2e63" },
+  { id: "arsenal",    label: "Arsenal",     ghost: "STACK",   morph: { t: 1, s: 0.9,  a: 0.5, p: 0.5  }, accent: "#7c3aed" },
+  { id: "work",       label: "Nepal Share", ghost: "100K",    morph: { t: 2, s: 0,    a: 1,   p: 0    }, accent: "#c8ff00" },
+  { id: "work-2",     label: "gStore",      ghost: "RETAIL",  morph: { t: 3, s: 0,    a: 1,   p: 0.3  }, accent: "#f59e0b" },
+  { id: "work-3",     label: "Brainants",   ghost: "FOUNDER", morph: { t: 4, s: 0.12, a: 1,   p: 0.55 }, accent: "#00b4d8" },
+  { id: "work-4",     label: "Toptal",      ghost: "TOP 3%",  morph: { t: 4, s: 0,    a: 1,   p: 0.15 }, accent: "#296bff" },
+  { id: "work-5",     label: "Highlights",  ghost: "SHIPPED", morph: { t: 4, s: 0.55, a: 0.7, p: 0.7  }, accent: "#a78bfa" },
+  { id: "agentops",   label: "Workflow",    ghost: "DELIVERY",morph: { t: 5, s: 0,    a: 1,   p: 1    }, accent: "#28c840" },
+  { id: "opensource", label: "Open Source", ghost: "OSS",     morph: { t: 5, s: 0.75, a: 0.5, p: 0.85 }, accent: "#00b4d8" },
+  { id: "journey",    label: "Journey",     ghost: "15→25",   morph: { t: 6, s: 0,    a: 1,   p: 0.45 }, accent: "#f59e0b" },
+  { id: "contact",    label: "Contact",     ghost: "CONTACT", morph: { t: 7, s: 0,    a: 1,   p: 0.05 }, accent: "#ff2e63" },
 ] as const;
 
 export const SCENE_COUNT = SCENES.length;
@@ -85,11 +85,11 @@ export function Stage() {
           trigger: proxy,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.55,
+          scrub: 0.35,
           snap: {
             snapTo: (value) => nearestSnapPoint(value, N),
-            duration: { min: 0.45, max: 1.05 },
-            delay: 0.08,
+            duration: { min: 0.28, max: 0.65 },
+            delay: 0.04,
             ease: "power3.out",
             inertia: false,
           },
@@ -254,6 +254,7 @@ export function Stage() {
           className="scene"
           id={s.id}
           key={s.id}
+          style={{ "--sc-accent": s.accent } as React.CSSProperties}
           ref={(el) => {
             sceneEls.current[i] = el;
           }}

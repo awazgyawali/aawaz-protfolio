@@ -1,0 +1,24 @@
+[debug] [2026-06-20T19:39:42.951Z] ----------------------------------------------------------------------
+[debug] [2026-06-20T19:39:42.962Z] Command:       /usr/local/bin/firebase /Users/aawaz/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy --only hosting
+[debug] [2026-06-20T19:39:42.962Z] CLI Version:   15.20.0
+[debug] [2026-06-20T19:39:42.962Z] Platform:      darwin
+[debug] [2026-06-20T19:39:42.963Z] Node Version:  v20.18.2
+[debug] [2026-06-20T19:39:42.964Z] Time:          Sun Jun 21 2026 01:24:42 GMT+0545 (Nepal Time)
+[debug] [2026-06-20T19:39:42.964Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-06-20T19:39:42.968Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-06-20T19:39:44.360Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-20T19:39:44.362Z] > authorizing via signed-in user (awazgyawali@gmail.com)
+[debug] [2026-06-20T19:39:44.362Z] [iam] checking project aawaz-gyawali for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-06-20T19:39:44.363Z] Checked if tokens are valid: false, expires at: 1781885629147
+[debug] [2026-06-20T19:39:44.364Z] Checked if tokens are valid: false, expires at: 1781885629147
+[debug] [2026-06-20T19:39:44.364Z] > refreshing access token with scopes: []
+[debug] [2026-06-20T19:39:44.365Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-06-20T19:39:44.366Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-20T19:39:45.074Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-06-20T19:39:45.075Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-06-20T19:39:45.104Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-06-20T19:39:45.105Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-20T19:39:45.116Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/aawaz-gyawali:testIamPermissions [none]
+[debug] [2026-06-20T19:39:45.117Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/aawaz-gyawali:testIamPermissions  x-goog-user-project=aawaz-gyawali
+[debug] [2026-06-20T19:39:45.117Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aawaz-gyawali:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
